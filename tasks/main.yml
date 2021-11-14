@@ -8,7 +8,7 @@
 - name: Create app container
   docker_container:
     name: "{{ application_name }}-app"
-    image: "{{ image_name }}"
+    image: "kylemanna/openvpn"
     capabilities: ["NET_ADMIN"]
     restart_policy: "always"
     log_driver: "awslogs"

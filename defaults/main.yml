@@ -1,2 +1,4 @@
 ---
 application_name: openvpn
+docker_network_name: openvpn_network
+app_ip_address: 127.1.1.100
