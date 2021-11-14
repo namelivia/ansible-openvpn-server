@@ -1,0 +1,42 @@
+---
+- name: Create the dockernetwork
+  docker_network:
+    name: "{{ docker_network_name }}"
+    ipam_options:
+      subnet: "127.1.1.0/24"
+
+- name: Create app container
+  docker_container:
+    name: "{{ application_name }}-app"
+    image: "{{ image_name }}"
+    capabilities: ["NET_ADMIN"]
+    restart_policy: "always"
+    log_driver: "awslogs"
+    memory: "10MB"
+    log_options:
+        awslogs-region: "{{cloudwatch_region}}"
+        awslogs-group: "{{cloudwatch_log_group}}"
+        awslogs-stream: "{{ application_name }}-app"
+    networks:
+      - name: "{{ docker_network_name }}"
+        ipv4_address: "{{ app_ip_address }}"
+    volumes:
+      - "{{ hostvars[inventory_hostname].working_directory }}openvpn:/etc/openvpn"
+    ports:
+      - "1194:1194/udp"
+    env:
+      VIRTUAL_HOST: "{{ domain_name }}"
+      LETSENCRYPT_HOST: "{{ domain_name }}"
+      VIRTUAL_PORT: "1194"
+
+- name: Copy vpn config
+  copy:
+    src: "{{openvpn_config_folder}}"
+    dest: "{{ hostvars[inventory_hostname].working_directory }}"
+    owner: ubuntu
+    group: ubuntu
+
+# TODO :  THIS IS JUST PLAIN WRONG!
+#- name: Add container route
+#  shell:
+#  cmd: ip route add 192.168.255.6 via 172.17.0.6 dev docker0
