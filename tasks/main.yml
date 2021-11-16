@@ -26,9 +26,9 @@
     log_driver: "awslogs"
     memory: "10MB"
     log_options:
-        awslogs-region: "{{cloudwatch_region}}"
-        awslogs-group: "{{cloudwatch_log_group}}"
-        awslogs-stream: "{{ application_name }}-app"
+      awslogs-region: "{{ cloudwatch_region }}"
+      awslogs-group: "{{ cloudwatch_log_group }}"
+      awslogs-stream: "{{ application_name }}-app"
     networks:
       - name: "{{ docker_network_name }}"
         ipv4_address: "{{ app_ip_address }}"
@@ -43,12 +43,12 @@
 
 - name: Copy vpn config
   copy:
-    src: "{{openvpn_config_folder}}"
+    src: "{{ openvpn_config_folder }}"
     dest: "{{ hostvars[inventory_hostname].working_directory }}"
     owner: ubuntu
     group: ubuntu
 
 # TODO :  THIS IS JUST PLAIN WRONG!
-#- name: Add container route
-#  shell:
-#  cmd: ip route add 192.168.255.6 via 172.17.0.6 dev docker0
+# - name: Add container route
+#   shell:
+#   cmd: ip route add 192.168.255.6 via 172.17.0.6 dev docker0
