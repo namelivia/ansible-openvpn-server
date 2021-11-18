@@ -11,7 +11,7 @@ collections:
   - community.docker
 
 roles:
-  - src: https://github.com/namelivia/namelivia.openvpn-server
+  - src: https://github.com/namelivia/ansible-openvpn-server
 ```
 
 ## Required variables (TODO: Update these)
