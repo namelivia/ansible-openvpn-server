@@ -47,6 +47,7 @@
     dest: "{{ hostvars[inventory_hostname].working_directory }}"
     owner: ubuntu
     group: ubuntu
+    mode: 0700
 
 # TODO :  THIS IS JUST PLAIN WRONG!
 # - name: Add container route
