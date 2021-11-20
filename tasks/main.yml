@@ -14,7 +14,7 @@
 - name: Create the dockernetwork
   docker_network:
     name: "{{ docker_network_name }}"
-    ipam_options:
+    ipam_driver_options:
       subnet: "127.1.1.0/24"
 
 - name: Create app container
