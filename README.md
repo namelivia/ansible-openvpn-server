@@ -1,4 +1,4 @@
-# OpenVPN sever Ansible role
+# OpenVPN sever Ansible role [![Ansible Lint](https://github.com/namelivia/ansible-openvpn-server/actions/workflows/ansible-lint.yml/badge.svg)](https://github.com/namelivia/ansible-openvpn-server/actions/workflows/ansible-lint.yml)
 
 ## This is a WIP
 
