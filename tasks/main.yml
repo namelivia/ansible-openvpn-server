@@ -16,8 +16,6 @@
     name: "{{ docker_network_name }}"
     ipam_config:
       - subnet: 127.1.1.0/24
-        gateway: 127.1.1.1
-        iprange: 127.1.1.0/26
 
 - name: Create app container
   docker_container:
