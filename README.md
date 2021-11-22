@@ -28,5 +28,4 @@ roles:
  - `cloudwatch_region` Cloudwatch region to send the logs to.
  - `cloudwatch_log_group` Cloudwatch log group to send the logs to.
  - `openvpn_config_folder` The path in which the openvpn configuration will be copied from.
- - `app_ip_addres` The ip addres for the container running openvpn.
  - `domain_name` The domain name in which the app will be served from.
