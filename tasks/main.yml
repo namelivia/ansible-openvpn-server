@@ -21,6 +21,7 @@
     capabilities: ["NET_ADMIN"]
     restart_policy: "always"
     log_driver: "awslogs"
+    cleanup: true
     memory: "10MB"
     log_options:
       awslogs-region: "{{ cloudwatch_region }}"
