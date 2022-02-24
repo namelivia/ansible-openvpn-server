@@ -30,7 +30,7 @@
     networks:
       - name: "{{ docker_network_name }}"
     volumes:
-      - "{{ hostvars[inventory_hostname].working_directory }}openvpn:/etc/openvpn"
+      - "{{ hostvars[inventory_hostname].working_directory }}{{ application_name }}:/etc/openvpn"
     ports:
       - "1194:1194/udp"
     env:
@@ -41,7 +41,7 @@
 - name: Copy vpn config
   copy:
     src: "{{ openvpn_config_folder }}"
-    dest: "{{ hostvars[inventory_hostname].working_directory }}"
+    dest: "{{ hostvars[inventory_hostname].working_directory }}{{ application_name }}"
     owner: ubuntu
     group: ubuntu
     force: true
